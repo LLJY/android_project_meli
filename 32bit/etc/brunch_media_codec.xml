@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<CodecList>
+	<Decoders>
+		<MediaCodec name="OMX.lge.flac.decoder" type="audio/x-lg-flac"/>
+		<MediaCodec name="OMX.lge.adpcm.decoder" type="audio/adpcm"/>
+		<MediaCodec name="OMX.lge.g726.decoder" type="audio/g726"/>
+		<MediaCodec name="OMX.lge.DDPDecodeEAC3" type="audio/eac3"/>
+		<MediaCodec name="OMX.lge.DDPDecode" type="audio/ac3"/>
+		<MediaCodec name="OMX.lge.wmsVoice.decoder" type="audio/lg-wma-voice"/>
+		<MediaCodec name="OMX.lge.wms.decoder" type="audio/x-lg-ms-wma"/>
+		<MediaCodec name="OMX.lge.theora.decoder" type="video/theora"/>
+		<MediaCodec name="OMX.lge.mjpg.decoder" type="video/mjpg"/>
+		<MediaCodec name="OMX.lge.alac.decoder" type="audio/x-lg-alac"/>
+		<MediaCodec name="OMX.vivo.ape.decoder" type="audio/ape" />
+        <MediaCodec name="OMX.vivo.flac.decoder" type="audio/flac" />
+        <MediaCodec name="OMX.vivo.alac.decoder" type="audio/alac" />
+        <!--
+        <MediaCodec name="OMX.vivo.dts.decoder" type="audio/dts" >
+            <Quirk name="input-buffer-size-bogus" />
+        </MediaCodec>
+        -->
+        <MediaCodec name="OMX.vivo.rawx.decoder" type="audio/rawx" />
+        <MediaCodec name="OMX.vivo.ac3.decoder" type="audio/ac3" />
+        <MediaCodec name="OMX.vivo.eac3.decoder" type="audio/eac3" />
+        <MediaCodec name="OMX.vivo.mp3.decoder" type="audio/mpeg-L1" />
+        <MediaCodec name="OMX.vivo.mp3.decoder" type="audio/mpeg-L2" />
+        <MediaCodec name="OMX.vivo.wma.decoder" type="audio/x-ms-wma" />
+        <MediaCodec name="OMX.vivo.alaw.decoder" type="audio/g711-alaw" />
+        <MediaCodec name="OMX.vivo.mlaw.decoder" type="audio/g711-mlaw" />
+        <MediaCodec name="OMX.vivo.adpcm_ms.decoder" type="audio/x-ms-adpcm" />
+        <MediaCodec name="OMX.vivo.adpcm_ima.decoder" type="audio/x-ima-adpcm" />
+        <MediaCodec name="OMX.DTS.audio_decoder.dts" type="audio/dts" >
+	</Decoders>
+</CodecList>

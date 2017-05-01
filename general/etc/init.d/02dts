@@ -1,0 +1,15 @@
+# Project Meli Script
+# FREE TO USE FOR ANYONE
+# by PDesire
+
+# Mount RW
+mount -o remount,rw /system
+mount -o remount,rw /data
+mount -o remount,rw /cache
+
+# Enable DTS configurator
+dts_configurator
+
+# Mount RO again
+mount -o remount,ro /system
+mount -o remount,ro /cache

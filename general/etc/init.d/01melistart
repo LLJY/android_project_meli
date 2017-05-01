@@ -1,0 +1,36 @@
+# Project Meli Script
+# FREE TO USE FOR ANYONE
+# by PDesire
+
+# Mount RW
+mount -o remount,rw /system
+mount -o remount,rw /data
+mount -o remount,rw /cache
+
+# enable PDesireAudio Ultra High Quality Audio
+echo 1 > /sys/module/snd_soc_wcd9320/parameters/uhqa_mode_pdesireaudio
+echo 1 > /sys/module/snd_soc_wcd9330/parameters/uhqa_mode_pdesireaudio
+
+# enable Audio High Performance Mode
+echo 1 > /sys/module/snd_soc_wcd9320/parameters/high_perf_mode
+echo 1 > /sys/module/snd_soc_wcd9330/parameters/high_perf_mode
+
+# Fauxsound Callibrations
+echo '252 252 7' > /sys/kernel/sound_control_3/gpl_headphone_gain
+echo '252 252' > /sys/kernel/sound_control_3/gpl_headphone_gain
+echo '32 32 191' > /sys/kernel/sound_control_3/gpl_headphone_pa_gain
+echo '32 32' > /sys/kernel/sound_control_3/gpl_headphone_pa_gain
+
+# disable lpa
+setprop lpa.decode false
+setprop lpa.releaselock false
+setprop lpa.use-stagefright false
+setprop tunnel.decode false
+setprop tunnel.audio.decode false
+
+# increase buffer
+setprop audio.offload.buffer.size.kb 1024
+
+# Mount RO again
+mount -o remount,ro /system
+mount -o remount,ro /cache

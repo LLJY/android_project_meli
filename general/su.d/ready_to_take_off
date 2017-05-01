@@ -1,0 +1,8 @@
+# Project Meli Script
+# FREE TO USE FOR ANYONE
+# by PDesire
+
+# fix V4A
+supolicy --live "allow mediaserver mediaserver_tmpfs:file { execute };"
+
+supolicy --live "allow audioserver audioserver_tmpfs:file { read execute };"
