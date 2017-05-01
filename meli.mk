@@ -15,16 +15,20 @@
 
 MELI_PATH:= meli
 
+
+include $(CLEAR_VARS)
+
 ifeq ($(PRODUCT_PROJECT_MELI_IMPLEMENT), true)
-PRODUCT_COPY_FILES += $(shell ls $(MELI_PATH)/general/*)
+PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*,$(MELI_PATH)/general,system)
 
 ifeq ($(TARGET_ARCH), arm64)
-PRODUCT_COPY_FILES += $(shell ls $(MELI_PATH)/64bit/*)
+PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*,$(MELI_PATH)/64bit,system)
 endif
 
 
 ifeq ($(TARGET_ARCH), arm)
-PRODUCT_COPY_FILES += $(shell ls $(MELI_PATH)/32bit/*)
-
+PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*,$(MELI_PATH)/32bit,system)
 endif
+
+$(call inherit-product, $(MELI_PATH)/meli-partial.mk)
 endif
