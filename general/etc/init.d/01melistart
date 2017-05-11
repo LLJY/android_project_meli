@@ -8,19 +8,52 @@ mount -o remount,rw /data
 mount -o remount,rw /cache
 
 # enable PDesireAudio Ultra High Quality Audio
-echo 1 > /sys/module/snd_soc_wcd9320/parameters/uhqa_mode_pdesireaudio
-echo 1 > /sys/module/snd_soc_wcd9330/parameters/uhqa_mode_pdesireaudio
+if [ -e /sys/module/snd_soc_wcd9320/parameters/uhqa_mode_pdesireaudio ]
+then
+ echo 1 > /sys/module/snd_soc_wcd9320/parameters/uhqa_mode_pdesireaudio
+fi
+if [ -e /sys/module/snd_soc_wcd9320/parameters/uhqa_mode_pdesireaudio ]
+then
+ echo 1 > /sys/module/snd_soc_wcd9330/parameters/uhqa_mode_pdesireaudio
+fi
 
+# enable tweaks for wcd9335
+if [ -e /sys/module/snd_soc_wcd9xxx/parameters ]
+then
+ chmod 666 /sys/module/snd_soc_wcd9xxx/parameters/impedance_detect_en
+ echo 1 > /sys/module/snd_soc_wcd9xxx/parameters/impedance_detect_en
+ chmod 444 /sys/module/snd_soc_wcd9xxx/parameters/impedance_detect_en
+fi
+if [ -e  /sys/module/snd_soc_wcd9335 ]
+then
+ chmod 666 /sys/module/snd_soc_wcd9335/parameters/sido_buck_svs_voltage
+ echo 965 > /sys/module/snd_soc_wcd9335/parameters/sido_buck_svs_voltage
+ chmod 444 /sys/module/snd_soc_wcd9335/parameters/sido_buck_svs_voltage
+fi
 # enable Audio High Performance Mode
-echo 1 > /sys/module/snd_soc_wcd9320/parameters/high_perf_mode
-echo 1 > /sys/module/snd_soc_wcd9330/parameters/high_perf_mode
+if [ -e /sys/module/snd_soc_wcd9320/parameters ]
+then
+ chmod 666 /sys/module/snd_soc_wcd9320/parameters/high_perf_mode
+ echo 1 > /sys/module/snd_soc_wcd9320/parameters/high_perf_mode
+ chmod 444 /sys/module/snd_soc_wcd9320/parameters/high_perf_mode
+fi
+if [ -e /sys/module/snd_soc_wcd9330/parameters ]
+then
+ chmod 666 /sys/module/snd_soc_wcd9330/parameters/high_perf_mode
+ echo 1 > /sys/module/snd_soc_wcd9330/parameters/high_perf_mode
+ chmod 444 /sys/module/snd_soc_wcd9330/parameters/high_perf_mode
+fi
 
 # Fauxsound Callibrations
-echo '252 252 7' > /sys/kernel/sound_control_3/gpl_headphone_gain
-echo '252 252' > /sys/kernel/sound_control_3/gpl_headphone_gain
-echo '32 32 191' > /sys/kernel/sound_control_3/gpl_headphone_pa_gain
-echo '32 32' > /sys/kernel/sound_control_3/gpl_headphone_pa_gain
-
+#note that faux sound is deprecated
+#therefore, please remove this asap
+if [ -e /sys/kernel/sound_control_3 ]
+then
+ echo '252 252 7' > /sys/kernel/sound_control_3/gpl_headphone_gain
+ echo '252 252' > /sys/kernel/sound_control_3/gpl_headphone_gain
+ echo '32 32 191' > /sys/kernel/sound_control_3/gpl_headphone_pa_gain
+ echo '32 32' > /sys/kernel/sound_control_3/gpl_headphone_pa_gain
+fi
 # disable lpa
 setprop lpa.decode false
 setprop lpa.releaselock false
