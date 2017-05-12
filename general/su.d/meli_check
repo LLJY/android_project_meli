@@ -1,0 +1,31 @@
+#!/system/bin/sh
+# Project Meli Script
+# FREE TO USE FOR ANYONE
+# by LLJY
+
+mount -o remount,rw /system
+mount -o remount,rw /data
+mount -o remount,rw /cache
+
+boot=$(cat /system/Desire/meli_check/boot_num)
+if [ $boot = 1 ]
+then
+ stat=$(cat /system/meli_stat)
+ if [ $stat = 1 ]
+ then
+  rm /system/Desire/meli_check
+  rm /system/su.d/meli_check
+ else
+  echo "#init.d is faulty, meli will switch to su.d on next boot!" > /system/meli_stat
+  mv /system/etc/init.d/01melistart /system/su.d/01melistart
+  chmod 0700 /system/su.d/01melistart
+  mv /system/etc/init.d/02dts /system/su.d/02dts
+  chmod 0700 /system/su.d/02dts
+ fi
+else
+echo '1' > /system/Desire/meli_check/boot_num
+fi
+
+
+mount -o remount,ro /system
+mount -o remount,ro /cache
