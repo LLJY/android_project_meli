@@ -7,6 +7,8 @@ mount -o remount,rw /system
 mount -o remount,rw /data
 mount -o remount,rw /cache
 
+echo '1' > /system/meli_stat
+
 # enable PDesireAudio Ultra High Quality Audio
 if [ -e /sys/module/snd_soc_wcd9320/parameters/uhqa_mode_pdesireaudio ]
 then
