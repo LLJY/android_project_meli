@@ -12,7 +12,7 @@ if [ -e /sys/module/snd_soc_wcd9320/parameters/uhqa_mode_pdesireaudio ]
 then
  echo 1 > /sys/module/snd_soc_wcd9320/parameters/uhqa_mode_pdesireaudio
 fi
-if [ -e /sys/module/snd_soc_wcd9320/parameters/uhqa_mode_pdesireaudio ]
+if [ -e /sys/module/snd_soc_wcd9330/parameters/uhqa_mode_pdesireaudio ]
 then
  echo 1 > /sys/module/snd_soc_wcd9330/parameters/uhqa_mode_pdesireaudio
 fi
@@ -44,15 +44,6 @@ then
  chmod 444 /sys/module/snd_soc_wcd9330/parameters/high_perf_mode
 fi
 
-# Fauxsound Callibrations
-#note that faux sound is deprecated
-#therefore, please remove this asap
-if [ -e /sys/kernel/sound_control_3 ]
-then
- echo '252 252 7' > /sys/kernel/sound_control_3/gpl_headphone_gain
- echo '252 252' > /sys/kernel/sound_control_3/gpl_headphone_gain
- echo '32 32 191' > /sys/kernel/sound_control_3/gpl_headphone_pa_gain
- echo '32 32' > /sys/kernel/sound_control_3/gpl_headphone_pa_gain
 fi
 # disable lpa
 setprop lpa.decode false
