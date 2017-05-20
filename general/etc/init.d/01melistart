@@ -45,8 +45,6 @@ then
  echo 1 > /sys/module/snd_soc_wcd9330/parameters/high_perf_mode
  chmod 444 /sys/module/snd_soc_wcd9330/parameters/high_perf_mode
 fi
-
-fi
 # disable lpa
 setprop lpa.decode false
 setprop lpa.releaselock false
